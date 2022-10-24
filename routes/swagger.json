@@ -1,0 +1,129 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Get In",
+      "description": "Consumo de la aplicación de información, aplicación Get In",
+      "license": {
+        "name": "Get In",
+        "url": ""
+      }
+    },
+    "host": "localhost:9000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Get In",
+        "description": "Consumo de la aplicación de información, aplicación Get In, con validación de token, por tiempo por ase de datos"
+      }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+      "/authUsers": {
+        "post": {
+          "tags": ["Token"],
+          "parameters": [
+            {
+              "in": "body",
+              "description": "Los parametros son obligatorios",
+              "schema": {
+                "$ref": "#/definitions/authUsers"
+              }
+            }
+          ],
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Ok"
+            }
+          }
+        }
+      },
+      "/GetIn": {
+        "post": {
+          "tags": ["Token"],
+          "description": "Busca información sin filtros o con filtros ingresador por el usuario",
+          "parameters": [
+            {
+              "name": "user",
+              "in": "body",
+              "description": "Los parametros no son obligatorios",
+              "schema": {
+                "$ref": "#/definitions/GetIn"
+              }
+            }
+          ],
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Ok"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "authUsers": {
+        "properties": {
+          "AutenticacionToken": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "Nombre": {
+                  "type": "string",
+                  "value":"fer"
+                },
+                "Contrasena": {
+                  "type": "string",
+                  "value":"123"
+                }
+              }
+            }
+          }
+        }
+      },
+      "GetIn": {
+        "type": "array",
+        "$ref": "#/definitions/GetIn",
+        "properties": {
+            "AutenticacionToken": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "NoTicketsXHora": {
+                    "type": "integer",
+                    "value": 4
+                  },
+                  "TotalxHora": {
+                    "type": "integer",
+                    "value": 25
+                  },
+                  "NoItemsVendidosXHora": {
+                    "type": "integer",
+                    "value":27
+                  },
+                  "IdentificadorTienda": {
+                    "type": "integer",
+                    "value": 1
+                  },
+                  "Fecha": {
+                    "type": "date",
+                    "value": "2022-09-01"
+                  },
+                  "Hora": {
+                    "type": "integer",
+                    "value": 10
+                  }
+                }
+              }
+            }
+          }
+      }
+    }
+  }
+  
+  
